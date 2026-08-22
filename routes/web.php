@@ -7,10 +7,10 @@ use App\Http\Middleware\CheckIsLogged;
 use App\Http\Middleware\CheckIsNotLogged;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware([CheckIsLogged::class])->prefix('/livros')->name('livros.')->group(function () {
-    Route::view('/', 'dashboard')->name('dashboard');
+Route::middleware([CheckIsLogged::class])->group(function () {
+    Route::get('/', fn() => view('dashboard'))->name('dashboard');
 
-    Route::controller(LivroController::class)->group(function () {
+    Route::controller(LivroController::class)->prefix('/livros')->name('livros.')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/criar', 'criar')->name('criar');
         Route::post('/criar', 'criarSubmit')->name('criarSubmit');
@@ -35,4 +35,5 @@ Route::middleware([CheckIsNotLogged::class])->controller(AuthController::class)-
     Route::get('/login', 'login')->name('login');
     Route::post('/login-submit', 'loginSubmit')->name('login.submit');
     Route::get('/register', 'register')->name('register');
+    Route::post('/logout', 'logout')->name('logout');
 });
