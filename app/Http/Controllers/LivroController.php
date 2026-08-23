@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Livro;
+use App\Services\Operations;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class LivroController extends Controller
@@ -59,6 +61,8 @@ class LivroController extends Controller
 
     public function editar($id)
     {
+        $id = Operations::decryptId($id);
+
         $livro = Livro::find($id);
         if (!$livro) {
             return redirect()->route('livros.index');
@@ -70,13 +74,8 @@ class LivroController extends Controller
         ]);
     }
 
-    public function editarSubmit(Request $request, $id)
+    public function editarSubmit(Request $request)
     {
-        $livro = Livro::find($id);
-        if (!$livro) {
-            return redirect()->route('livros.index');
-        }
-
         $validated = $request->validate([
             'titulo' => 'required|string|max:100',
             'autor' => 'required|string|max:100',
@@ -100,6 +99,13 @@ class LivroController extends Controller
             'ano_publicacao.min' => 'O campo ano de publicação não pode ser negativo.',
         ]);
 
+        $id = Operations::decryptId($request->livro_id);
+
+        $livro = Livro::find($id);
+        if (!$livro) {
+            return redirect()->route('livros.index');
+        }
+
         $livro->update($validated);
 
         return redirect()->route('livros.index')->with('success', 'Livro atualizado com sucesso!');
@@ -107,6 +113,8 @@ class LivroController extends Controller
 
     public function deletar($id)
     {
+        $id = Operations::decryptId($id);
+
         $livro = Livro::find($id);
         if (!$livro) {
             return redirect()->route('livros.index');
@@ -117,6 +125,8 @@ class LivroController extends Controller
 
     public function deletarSubmit($id)
     {
+        $id = Operations::decryptId($id);
+
         $livro = Livro::find($id);
         if (!$livro) {
             return redirect()->route('livros.index');

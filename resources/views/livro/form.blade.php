@@ -14,8 +14,12 @@
                             </h1>
                         </div>
 
-                        <form method="POST" action="{{ $modo === 'editar' ? route('livros.editarSubmit', $livro->id) : route('livros.criarSubmit') }}">
+                        <form method="POST" action="{{ $modo === 'editar' ? route('livros.editarSubmit', App\Services\Operations::encryptId($livro->id)) : route('livros.criarSubmit') }}">
                             @csrf
+
+                            @if ($modo === 'editar')
+                                <input type="hidden" name="livro_id" value="{{ \App\Services\Operations::encryptId($livro->id) }}">
+                            @endif
 
                             <div class="mb-3">
                                 <label for="titulo" class="form-label">Título</label>

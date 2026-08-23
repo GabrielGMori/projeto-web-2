@@ -40,8 +40,8 @@
                                         <td>{{ $livro->ano_publicacao }}</td>
                                         <td class="text-center">
                                             <div class="d-flex justify-content-center gap-2">
-                                                <a href="{{ route('livros.editar', $livro->id) }}" class="btn btn-sm btn-outline-primary">Editar</a>
-                                                <a href="{{ route('livros.deletar', $livro->id) }}" class="btn btn-sm btn-outline-danger">Excluir</a>
+                                                <a href="{{ route('livros.editar', App\Services\Operations::encryptId($livro->id)) }}" class="btn btn-sm btn-outline-primary">Editar</a>
+                                                <a href="{{ route('livros.deletar', App\Services\Operations::encryptId($livro->id)) }}" class="btn btn-sm btn-outline-danger">Excluir</a>
                                             </div>
                                         </td>
                                     </tr>

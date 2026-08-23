@@ -6,7 +6,6 @@ use Illuminate\Contracts\Encryption\DecryptException;
 
 class Operations
 {
-
      public static function decryptId($value)
     {
         try {
@@ -20,6 +19,4 @@ class Operations
     {
         return Crypt::encrypt($value);
     }
-
-
 }

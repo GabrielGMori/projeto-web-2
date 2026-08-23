@@ -13,7 +13,7 @@
                             Tem certeza que deseja excluir o livro <strong>{{ $livro->titulo }}</strong>?
                         </p>
 
-                        <form method="POST" action="{{ route('livros.deletarSubmit', $livro->id) }}">
+                        <form method="POST" action="{{ route('livros.deletarSubmit', App\Services\Operations::encryptId($livro->id)) }}">
                             @csrf
                             <div class="d-flex justify-content-center gap-2">
                                 <a href="{{ route('livros.index') }}" class="btn btn-outline-secondary">Cancelar</a>
