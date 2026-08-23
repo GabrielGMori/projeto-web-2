@@ -11,19 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('emprestimos', function (Blueprint $table) {
-            $table->id();
+       Schema::create('emprestimos', function (Blueprint $table) {
+        $table->id();
 
-            $table->integer('dias');
-            $table->integer('extensoes_de_prazo');
-            $table->boolean('devolvido')->default(false);
-            $table->string('funcionario', 100);
+        $table->integer('dias');
+        $table->integer('extensoes_de_prazo');
+        $table->boolean('devolvido')->default(false);
+        $table->string('funcionario', 100);
 
-            $table->foreignId('livro_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+        $table->foreignId('livro_id')->constrained()->cascadeOnDelete();
+        $table->foreignId('user_id')->constrained()->cascadeOnDelete();
 
-            $table->timestamps();
-        });
+        $table->timestamps();
+        $table->softDeletes();
+    });
     }
 
     /**
