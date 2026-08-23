@@ -28,6 +28,7 @@
                                     <th>Autor</th>
                                     <th>Editora</th>
                                     <th>Ano</th>
+                                    <th>Emprestado</th>
                                     <th class="text-center">Ações</th>
                                 </tr>
                             </thead>
@@ -38,10 +39,19 @@
                                         <td>{{ $livro->autor }}</td>
                                         <td>{{ $livro->editora }}</td>
                                         <td>{{ $livro->ano_publicacao }}</td>
+                                        <td>
+                                            @if ($livro->emprestimos->isNotEmpty())
+                                                Sim
+                                            @else
+                                                Não
+                                            @endif
+                                        </td>
                                         <td class="text-center">
                                             <div class="d-flex justify-content-center gap-2">
-                                                <a href="{{ route('livros.editar', App\Services\Operations::encryptId($livro->id)) }}" class="btn btn-sm btn-outline-primary">Editar</a>
-                                                <a href="{{ route('livros.deletar', App\Services\Operations::encryptId($livro->id)) }}" class="btn btn-sm btn-outline-danger">Excluir</a>
+                                                <a href="{{ route('livros.editar', App\Services\Operations::encryptId($livro->id)) }}"
+                                                    class="btn btn-sm btn-outline-primary">Editar</a>
+                                                <a href="{{ route('livros.deletar', App\Services\Operations::encryptId($livro->id)) }}"
+                                                    class="btn btn-sm btn-outline-danger">Excluir</a>
                                             </div>
                                         </td>
                                     </tr>

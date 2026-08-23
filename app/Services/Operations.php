@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Services;
-use Illuminate\Support\Facades\Crypt;
+
 use Illuminate\Contracts\Encryption\DecryptException;
+use Illuminate\Support\Facades\Crypt;
 
 class Operations
 {
-     public static function decryptId($value)
+    public static function decryptId($value)
     {
         try {
             return Crypt::decrypt($value);
@@ -15,7 +16,7 @@ class Operations
         }
     }
 
-       public static function encryptId($value)
+    public static function encryptId($value)
     {
         return Crypt::encrypt($value);
     }
