@@ -29,11 +29,13 @@ Route::middleware([CheckIsLogged::class])->group(function () {
         Route::get('/{id}/deletar', 'deletar')->name('deletar');
         Route::post('/{id}/deletar', 'deletarSubmit')->name('deletarSubmit');
     });
+
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
 Route::middleware([CheckIsNotLogged::class])->controller(AuthController::class)->group(function () {
     Route::get('/login', 'login')->name('login');
     Route::post('/login-submit', 'loginSubmit')->name('login.submit');
     Route::get('/register', 'register')->name('register');
-    Route::post('/logout', 'logout')->name('logout');
+    Route::post('/register', 'registerSubmit')->name('register.submit');
 });

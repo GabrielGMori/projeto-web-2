@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
-use App\Models\User;
 class AuthController extends Controller
 {
     public function login()
@@ -17,6 +17,11 @@ class AuthController extends Controller
         $validated = $request->validate([
             'email' => 'required|email',
             'password' => 'required',
+        ], [
+            'email.required' => 'O campo email é obrigatório.',
+            'email.email' => 'O campo email deve conter um endereço válido.',
+
+            'password.required' => 'O campo senha é obrigatório.',
         ]);
 
         $email = $validated['email'];
@@ -24,22 +29,16 @@ class AuthController extends Controller
 
         $user = User::where('email', $email)->whereNull('deleted_at')->first();
 
-        if (!$user || !password_verify($password,$user->password)) {
+        if (!$user || !password_verify($password, $user->password)) {
             return redirect()->back()->withInput()->with('login_error', 'E-mail ou senha incorretos!');
         }
 
         $user->last_login = date('Y-m-d H:i:s');
         $user->save();
 
-        session([
-            'user' => [
-                'id' => $user->id,
-                'username' => $user->username,
-                'email' => $user->email,
-            ]
-        ]);
+        session(['user' => $user]);
 
-        return redirect('/');
+        return redirect()->route('dashboard');
     }
 
     public function register()
@@ -53,7 +52,19 @@ class AuthController extends Controller
             'username' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:6|confirmed',
-        ]);
+        ], [
+                'username.required' => 'O campo nome de usuário é obrigatório.',
+                'username.email' => 'O campo de nome de usuário deve conter um endereço válido.',
+                'username.max' => 'O campo de nome de usuário não pode ter mais de 255 caracteres.',
+
+                'email.required' => 'O campo email é obrigatório.',
+                'email.email' => 'O campo email deve conter um endereço válido.',
+                'email.unique' => 'O email informado já está em uso.',
+
+                'password.required' => 'O campo password é obrigatório.',
+                'password.min' => 'O campo password deve ter no mínimo 6 caracteres',
+                'password.confirmed' => 'A confirmação de senha não corresponde à senha informada.',
+            ]);
 
         $user = new User();
         $user->username = $validated['username'];
