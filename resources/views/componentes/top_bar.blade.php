@@ -1,7 +1,7 @@
 <header class="p-3 mb-4 bg-primary shadow-sm d-flex align-items-center justify-content-around flex-wrap gap-3">
     <a href="{{ route('dashboard') }}"
         class="d-flex align-items-center text-white text-decoration-none me-5 transition-all">
-        <img src="{{ asset('storage/images/ifpr-icon.png') }}" alt="Logo Biblioteca" width="45" height="45"
+        <img src="{{ asset('images/ifpr-icon.png') }}" alt="Logo Biblioteca" width="45" height="45"
             class="me-3 rounded bg-white p-1 shadow-sm">
         <span class="fs-5 fw-bold mb-0">Biblioteca IFPR</span>
     </a>

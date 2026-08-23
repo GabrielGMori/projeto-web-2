@@ -58,7 +58,7 @@ class EmprestimoController extends Controller
         $emprestimo->extensoes_de_prazo = $validated['extensoes_de_prazo'];
         $emprestimo->funcionario = $validated['funcionario'];
         $emprestimo->devolvido = $request->has('devolvido');
-        $emprestimo->user_id = session('user')->id;
+        $emprestimo->user_id = session('user')['id'];
         $emprestimo->save();
 
         return redirect()->route('emprestimos.index')->with('success', 'Empréstimo cadastrado com sucesso!');
