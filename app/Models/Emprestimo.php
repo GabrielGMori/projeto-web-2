@@ -9,6 +9,8 @@ use App\Models\Livro;
 
 class Emprestimo extends Model
 {
+    use SoftDeletes;
+    
     protected $fillable = [
         'dias',
         'extensoes_de_prazo',
