@@ -19,7 +19,6 @@ class LivroController extends Controller
     public function criar()
     {
         return view('livro.form', [
-            'livro' => new Livro(),
             'modo' => 'criar',
         ]);
     }
@@ -132,7 +131,7 @@ class LivroController extends Controller
             return redirect()->route('livros.index');
         }
 
-        foreach($livro->emprestimos as $emprestimo) {
+        foreach ($livro->emprestimos as $emprestimo) {
             $emprestimo->delete();
         }
 

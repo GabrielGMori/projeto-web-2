@@ -21,7 +21,6 @@ class EmprestimoController extends Controller
         $livros = Livro::orderBy('titulo')->get();
 
         return view('emprestimo.form', [
-            'emprestimo' => new Emprestimo(),
             'livros' => $livros,
             'modo' => 'criar',
         ]);
