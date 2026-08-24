@@ -9,7 +9,7 @@
                 <div class="card shadow-sm border-0">
                     <div class="card-body p-4 p-lg-5">
                         <div class="d-flex justify-content-between align-items-center mb-4">
-                            <h1 class="h3 mb-0 text-white">
+                            <h1 class="h3 mb-0 text-primary">
                                 {{ $modo === 'editar' ? 'Editar livro' : 'Cadastrar livro' }}
                             </h1>
                         </div>
@@ -25,7 +25,7 @@
                                 <label for="titulo" class="form-label">Título</label>
                                 <input id="titulo" name="titulo" type="text" class="form-control" value="{{ old('titulo', $livro->titulo ?? '') }}">
                                 @error('titulo')
-                                    <p class="text-white">{{ $message }}</p>
+                                    <p class="text-primary">{{ $message }}</p>
                                 @enderror
                             </div>
 
@@ -33,7 +33,7 @@
                                 <label for="autor" class="form-label">Autor</label>
                                 <input id="autor" name="autor" type="text" class="form-control" value="{{ old('autor', $livro->autor ?? '') }}">
                                 @error('autor')
-                                    <p class="text-white">{{ $message }}</p>
+                                    <p class="text-primary">{{ $message }}</p>
                                 @enderror
                             </div>
 
@@ -41,7 +41,7 @@
                                 <label for="editora" class="form-label">Editora</label>
                                 <input id="editora" name="editora" type="text" class="form-control" value="{{ old('editora', $livro->editora ?? '') }}">
                                 @error('editora')
-                                    <p class="text-white">{{ $message }}</p>
+                                    <p class="text-primary">{{ $message }}</p>
                                 @enderror
                             </div>
 
@@ -49,7 +49,7 @@
                                 <label for="ano_publicacao" class="form-label">Ano de publicação</label>
                                 <input id="ano_publicacao" name="ano_publicacao" type="number" min="0" class="form-control" value="{{ old('ano_publicacao', $livro->ano_publicacao ?? '') }}">
                                 @error('ano_publicacao')
-                                    <p class="text-white">{{ $message }}</p>
+                                    <p class="text-primary">{{ $message }}</p>
                                 @enderror
                             </div>
 

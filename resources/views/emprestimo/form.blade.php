@@ -9,7 +9,7 @@
                 <div class="card shadow-sm border-0">
                     <div class="card-body p-4 p-lg-5">
                         <div class="d-flex justify-content-between align-items-center mb-4">
-                            <h1 class="h3 mb-0 text-white">
+                            <h1 class="h3 mb-0 text-primary">
                                 {{ $modo === 'editar' ? 'Editar empréstimo' : 'Cadastrar empréstimo' }}
                             </h1>
                         </div>
@@ -33,7 +33,7 @@
                                     @endforeach
                                 </select>
                                 @error('livro_id')
-                                    <p class="text-white">{{ $message }}</p>
+                                    <p class="text-primary">{{ $message }}</p>
                                 @enderror
                             </div>
 
@@ -41,7 +41,7 @@
                                 <label for="dias" class="form-label">Dias</label>
                                 <input id="dias" name="dias" type="number" min="1" class="form-control" value="{{ old('dias', $emprestimo->dias ?? '') }}">
                                 @error('dias')
-                                    <p class="text-white">{{ $message }}</p>
+                                    <p class="text-primary">{{ $message }}</p>
                                 @enderror
                             </div>
 
@@ -49,7 +49,7 @@
                                 <label for="extensoes_de_prazo" class="form-label">Extensões de prazo</label>
                                 <input id="extensoes_de_prazo" name="extensoes_de_prazo" type="number" min="0" class="form-control" value="{{ old('extensoes_de_prazo', $emprestimo->extensoes_de_prazo ?? 0) }}">
                                 @error('extensoes_de_prazo')
-                                    <p class="text-white">{{ $message }}</p>
+                                    <p class="text-primary">{{ $message }}</p>
                                 @enderror
                             </div>
 
@@ -57,7 +57,7 @@
                                 <label for="funcionario" class="form-label">Funcionário</label>
                                 <input id="funcionario" name="funcionario" type="text" class="form-control" value="{{ old('funcionario', $emprestimo->funcionario ?? '') }}">
                                 @error('funcionario')
-                                    <p class="text-white">{{ $message }}</p>
+                                    <p class="text-primary">{{ $message }}</p>
                                 @enderror
                             </div>
 
@@ -66,7 +66,7 @@
                                     {{ old('devolvido', $emprestimo->devolvido ?? false) ? 'checked' : '' }}>
                                 <label for="devolvido" class="form-check-label">Devolvido</label>
                                 @error('devolvido')
-                                    <p class="text-white">{{ $message }}</p>
+                                    <p class="text-primary">{{ $message }}</p>
                                 @enderror
                             </div>
 

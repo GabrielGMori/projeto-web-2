@@ -8,7 +8,7 @@
             <div class="col-md-5">
                 <div class="card shadow-sm border-0">
                     <div class="card-body p-4 p-lg-5">
-                        <h1 class="h3 text-white mb-4 text-center">Entrar</h1>
+                        <h1 class="h3 text-primary mb-4 text-center">Entrar</h1>
 
                         @if (session('login_error'))
                             <p class="alert alert-danger">{{ session('login_error') }}</p>
@@ -25,7 +25,7 @@
                                 <label for="email" class="form-label">E-mail</label>
                                 <input id="email" name="email" type="email" class="form-control" value="{{ old('email') }}">
                                 @error('email')
-                                    <p class="text-white">{{ $message }}</p>
+                                    <p class="text-primary">{{ $message }}</p>
                                 @enderror
                             </div>
 
@@ -33,7 +33,7 @@
                                 <label for="password" class="form-label">Senha</label>
                                 <input id="password" name="password" type="password" class="form-control">
                                 @error('password')
-                                    <p class="text-white">{{ $message }}</p>
+                                    <p class="text-primary">{{ $message }}</p>
                                 @enderror
                             </div>
 

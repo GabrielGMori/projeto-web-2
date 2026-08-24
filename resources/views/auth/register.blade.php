@@ -8,7 +8,7 @@
             <div class="col-md-6">
                 <div class="card shadow-sm border-0">
                     <div class="card-body p-4 p-lg-5">
-                        <h1 class="h3 text-white mb-4 text-center">Criar conta</h1>
+                        <h1 class="h3 text-primary mb-4 text-center">Criar conta</h1>
 
                         <form method="POST" action="{{ route('register.submit') }}">
                             @csrf
@@ -18,7 +18,7 @@
                                 <input id="username" name="username" type="text" class="form-control"
                                     value="{{ old('username') }}">
                                 @error('username')
-                                    <p class="text-white">{{ $message }}</p>
+                                    <p class="text-primary">{{ $message }}</p>
                                 @enderror
                             </div>
 
@@ -26,7 +26,7 @@
                                 <label for="email" class="form-label">E-mail</label>
                                 <input id="email" name="email" type="email" class="form-control" value="{{ old('email') }}">
                                 @error('email')
-                                    <div class="text-white">{{ $message }}</div>
+                                    <div class="text-primary">{{ $message }}</div>
                                 @enderror
                             </div>
 
@@ -34,7 +34,7 @@
                                 <label for="password" class="form-label">Senha</label>
                                 <input id="password" name="password" type="password" class="form-control">
                                 @error('password')
-                                    <p class="text-white">{{ $message }}</p>
+                                    <p class="text-primary">{{ $message }}</p>
                                 @enderror
                             </div>
 
@@ -43,7 +43,7 @@
                                 <input id="password_confirmation" name="password_confirmation" type="password"
                                     class="form-control">
                                 @error('password_confirmation')
-                                    <p class="text-white">{{ $message }}</p>
+                                    <p class="text-primary">{{ $message }}</p>
                                 @enderror
                             </div>
 

@@ -132,6 +132,10 @@ class LivroController extends Controller
             return redirect()->route('livros.index');
         }
 
+        foreach($livro->emprestimos as $emprestimo) {
+            $emprestimo->delete();
+        }
+
         $livro->delete();
 
         return redirect()->route('livros.index')->with('success', 'Livro removido com sucesso!');

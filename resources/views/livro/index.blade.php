@@ -5,7 +5,7 @@
 
     <div class="container py-4">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h1 class="h3 mb-1 text-white">Livros</h1>
+            <h1 class="h3 mb-1 text-primary">Livros</h1>
             <a href="{{ route('livros.criar') }}" class="btn btn-primary">Novo livro</a>
         </div>
 
@@ -40,7 +40,7 @@
                                         <td>{{ $livro->editora }}</td>
                                         <td>{{ $livro->ano_publicacao }}</td>
                                         <td>
-                                            @if ($livro->emprestimos->isNotEmpty())
+                                            @if (count($livro->emprestimos->where('devolvido', false)) > 0)
                                                 Sim
                                             @else
                                                 Não

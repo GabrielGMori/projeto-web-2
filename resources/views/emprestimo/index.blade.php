@@ -5,7 +5,7 @@
 
     <div class="container py-4">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h1 class="h3 mb-1 text-white">Empréstimos</h1>
+            <h1 class="h3 mb-1 text-primary">Empréstimos</h1>
             <a href="{{ route('emprestimos.criar') }}" class="btn btn-primary">Novo empréstimo</a>
         </div>
 
